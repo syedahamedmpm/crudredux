@@ -1,6 +1,7 @@
 import * as http from '../api/api';
 import { bookList } from './bookActions';
 import { addBook } from './bookActions';
+import { deleteBook } from './bookActions';
 export function getbooks (){
     return dispatch => {
     http
@@ -34,3 +35,16 @@ export function bookadd (id,booktittle,author){
     })
 }
 }
+
+export function bookdelete(id){
+  return dispatch =>{
+    http 
+    .booksDelete(id,"books")
+    .then((resp) => resp.json())
+    .then(data=>{
+      console.log(data)
+      dispatch(deleteBook(data));
+      console.log(dispatch(deleteBook(data)))
+    })
+}
+  }

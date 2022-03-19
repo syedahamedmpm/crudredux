@@ -31,3 +31,13 @@ export function booksGet(url) {
       }),
     });
   }
+
+
+  export function booksDelete(id,url) {
+    return fetch(baseUrl + url + "/"+id, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+  }

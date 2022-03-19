@@ -1,17 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import {getbooks} from '../actions/fetchData';
-
+import {bookdelete} from '../actions/fetchData'
 class BookList extends React.Component{
     
     componentDidMount() {
         console.log("I am working")
-        this.props.dispatch(getbooks());
+        this.props.getbooks();
         
       }
       handleDelete (id) {
           console.log(id)
-          
+          this.props.bookdelete(id);
       }
       
     render(){
@@ -33,4 +33,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
+    {bookdelete,getbooks}
 ) (BookList);
