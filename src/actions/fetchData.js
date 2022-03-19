@@ -19,9 +19,9 @@ export function getbooks (){
 export function bookadd (id,booktittle,author){
   return dispatch => {
     let body = {
-      "id": id,
-      "booktittle": booktittle,
-      "author": author
+      id: id,
+      booktittle: booktittle,
+      author: author
     }
     console.log(body)
   http 
@@ -32,6 +32,5 @@ export function bookadd (id,booktittle,author){
       dispatch(addBook(data));
       console.log(dispatch(addBook(data)))
     })
-  
 }
 }

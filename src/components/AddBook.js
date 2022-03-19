@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import {addBook} from '../actions/bookActions';
 import {bookadd} from '../actions/fetchData'
+import {getbooks} from '../actions/fetchData'
+
 class AddBook extends React.Component{
     constructor(){
         super()
@@ -22,8 +23,13 @@ class AddBook extends React.Component{
     submitbook = (e) =>{
         const {id,booktittle,author} = this.state
         e.preventDefault();
-        //this.props.dispatch(bookadd());
         this.props.bookadd(id,booktittle,author);
+        this.setState({
+            id:'',
+            booktittle : '',
+            author : ''
+        })
+        this.props.getbooks()
     }
     render(){
         return(
@@ -53,11 +59,7 @@ class AddBook extends React.Component{
         )
     }
 }
-const mapDispatchToProps = dispatch => ({
-    dispatch
- })
- 
 export default connect(
-    mapDispatchToProps,
-    {bookadd}
+    null,
+    {bookadd,getbooks}
 ) (AddBook);
