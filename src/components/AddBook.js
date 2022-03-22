@@ -12,6 +12,7 @@ class AddBook extends React.Component{
             author : ''
         }
     }
+   
     handleOnChange = (e) =>{
         const target = e.target
         const value = target.value
@@ -20,16 +21,17 @@ class AddBook extends React.Component{
             [name] : value
         })
     }
+    
     submitbook = (e) =>{
-        const {id,booktittle,author} = this.state
         e.preventDefault();
+        const {id,booktittle,author} = this.state
         this.props.bookadd(id,booktittle,author);
+        //this.props.getbooks();
         this.setState({
             id:'',
             booktittle : '',
             author : ''
         })
-        this.props.getbooks()
     }
     render(){
         return(
@@ -61,5 +63,5 @@ class AddBook extends React.Component{
 }
 export default connect(
     null,
-    {bookadd,getbooks}
+    {getbooks,bookadd}
 ) (AddBook);
